@@ -1,0 +1,11 @@
+{
+  "name": "node-capstone",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "author": "Taylor Welling",
+  "license": "ISC"
+}
