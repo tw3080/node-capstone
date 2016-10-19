@@ -1,8 +1,27 @@
+import angular from 'angular';
+import ngRoute from 'angular-route';
+import viewsModule from './views';
+import CollectionCtrl, { collectionRoute } from './components/collection/collection-controller';
+import CardInfoCtrl, { cardInfoRoute } from './components/card-info/card-info-controller';
+import ResultsCtrl, { resultsRoute } from './components/results/results-controller';
+import LoginCtrl, { loginRoute } from './components/login/login-controller';
+import SignupCtrl, { signupRoute } from './components/signup/signup-controller';
+import search from './components/search/search-directive';
+
 var collectionApp = angular.module('collectionApp', ['collectionAppViews', 'ngRoute'])
+    .config(collectionRoute)
+    .controller('CollectionCtrl', CollectionCtrl)
+    .config(cardInfoRoute)
+    .controller('CardInfoCtrl', CardInfoCtrl)
+    .config(resultsRoute)
+    .controller('ResultsCtrl', ResultsCtrl)
+    .config(loginRoute)
+    .controller('LoginCtrl', LoginCtrl)
+    .config(signupRoute)
+    .controller('SignupCtrl', SignupCtrl)
     .config(function($routeProvider) {
-        /* If the user tries to go to any route other than one which is already defined, redirect them to the home page */
         $routeProvider.otherwise({
-            redirectTo: '/'
+            redirectTo: '/collection'
         });
     });
 
