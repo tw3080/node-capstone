@@ -6,21 +6,26 @@
   "scripts": {
     "test": "mocha",
     "build": "npm run clean && npm run mkdir && npm run build:html && npm run build:css && npm run build:js",
-    "watch": "npm run watch:html & npm run watch:css & npm run watch:js",
+    "watch": "concurrently --kill-others \"npm run watch:js\" \"npm run watch:html\"",
     "mkdir": "mkdir build",
     "clean": "rm -rf build",
     "build:js": "npm run clean:js && webpack",
     "watch:js": "npm run build:js && webpack --watch",
     "clean:js": "rm -f build/$npm_package_name.$npm_package_version.js build/$npm_package_name.$npm_package_version.js.map",
     "build:css": "ls",
-    "build:html": "npm run clean:html && cp public/index.html build/",
-    "clean:html": "rm -f build/index.html"
+    "build:html": "npm run clean:html && cp public/index.html build/ && cp -r public/components build/",
+    "clean:html": "rm -f build/index.html",
+    "watch:html": "npm run build:html && gulp watch"
   },
   "author": "Taylor Welling",
   "license": "ISC",
   "devDependencies": {
+    "babel-core": "^6.17.0",
+    "babel-loader": "^6.2.5",
+    "babel-preset-es2015": "^6.16.0",
     "chai": "^3.5.0",
     "chai-http": "^3.0.0",
+    "concurrently": "^3.1.0",
     "mocha": "^3.1.2",
     "webpack": "^1.13.2"
   },
