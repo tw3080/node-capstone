@@ -15,7 +15,8 @@
     "build:css": "ls",
     "build:html": "npm run clean:html && cp public/index.html build/ && cp -r public/components build/",
     "clean:html": "rm -f build/index.html",
-    "watch:html": "npm run build:html && chokidar ./public/**/*.html -c \"npm run build:html\""
+    "watch:html": "npm run build:html && chokidar ./public/**/*.html -c \"npm run build:html\"",
+    "start": "supervisor server.js"
   },
   "author": "Taylor Welling",
   "license": "ISC",
