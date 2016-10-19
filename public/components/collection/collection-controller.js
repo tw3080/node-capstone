@@ -7,7 +7,11 @@ export function collectionRoute($routeProvider) {
 }
 
 export default class CollectionCtrl {
-    constructor() {
+    constructor(CollectionAppService) {
+        var cards = CollectionAppService.getCardByName();
+        cards.then(card => {
+            console.log(card);
+        });
         this.MOCK_USER_INFO = {
             "username": "username",
             "collectionSize": "11111",
