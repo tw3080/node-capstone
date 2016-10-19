@@ -7,8 +7,9 @@ import ResultsCtrl, { resultsRoute } from './components/results/results-controll
 import LoginCtrl, { loginRoute } from './components/login/login-controller';
 import SignupCtrl, { signupRoute } from './components/signup/signup-controller';
 import search from './components/search/search-directive';
+import CollectionAppService from './collection-app-service';
 
-var collectionApp = angular.module('collectionApp', ['collectionAppViews', 'ngRoute'])
+var collectionApp = angular.module('collectionApp', ['collectionAppViews', search, 'ngRoute'])
     .config(collectionRoute)
     .controller('CollectionCtrl', CollectionCtrl)
     .config(cardInfoRoute)
@@ -19,6 +20,7 @@ var collectionApp = angular.module('collectionApp', ['collectionAppViews', 'ngRo
     .controller('LoginCtrl', LoginCtrl)
     .config(signupRoute)
     .controller('SignupCtrl', SignupCtrl)
+    .service('CollectionAppService', CollectionAppService)
     .config(function($routeProvider) {
         $routeProvider.otherwise({
             redirectTo: '/collection'
