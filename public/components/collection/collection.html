@@ -1,0 +1,5 @@
+<p>
+    {{ collection.MOCK_USER_INFO.username }}'s Collection<br />
+    No. Collected: {{ collection.MOCK_USER_INFO.collectionSize }}<br />
+    Collection: <span ng-repeat="cards in collection.MOCK_USER_INFO.collection track by $index">{{ cards.card.name }}<br /></span>
+</p>
