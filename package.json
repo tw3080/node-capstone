@@ -34,8 +34,16 @@
   "dependencies": {
     "angular": "^1.5.8",
     "angular-route": "^1.5.8",
+    "bcryptjs": "^2.3.0",
+    "body-parser": "^1.15.2",
+    "cookie-parser": "^1.4.3",
     "express": "^4.14.0",
+    "express-session": "^1.14.1",
     "jquery": "^3.1.1",
+    "mongodb": "^2.2.11",
+    "mongoose": "^4.6.4",
+    "passport": "^0.3.2",
+    "passport-local": "^1.0.0",
     "pokemontcgsdk": "^1.0.0"
   }
 }
