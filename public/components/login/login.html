@@ -1,5 +1,5 @@
-<form name="loginForm" novalidate>
-    <input type="text" placeholder="Username" required />
-    <input type="text" placeholder="Password" required />
+<form name="loginForm" novalidate ng-submit="login.login()">
+    <input type="text" ng-model="login.username" placeholder="Username" required />
+    <input type="text" ng-model="login.password" placeholder="Password" required />
     <button type="submit" value="Login">Login</button>
 </form>
