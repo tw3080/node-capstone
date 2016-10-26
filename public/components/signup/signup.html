@@ -1,7 +1,7 @@
-<form name="loginForm" novalidate>
-    <input type="text" placeholder="Email" required />
-    <input type="text" placeholder="Username" required />
-    <input type="text" placeholder="Password" required />
-    <input type="text" placeholder="Confirm password" required />
+<form name="loginForm" novalidate ng-submit="signup.signUp()">
+    <input type="text" ng-model="signup.email" placeholder="Email" required />
+    <input type="text" ng-model="signup.username" placeholder="Username" required />
+    <input type="text" ng-model="signup.password" placeholder="Password" required />
+    <input type="text" ng-model="signup.confirmPassword" placeholder="Confirm password" required />
     <button type="submit" value="Sign Up">Sign Up</button>
 </form>
