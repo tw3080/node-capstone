@@ -1,4 +1,30 @@
-<form name="cardSearchForm" novalidate ng-submit="submit(address)">
-    <input type="text" ng-model="card" placeholder="Enter the name of a Pokemon" required />
-    <button type="submit" value="Search"></button>
-</form>
+<!-- submit becomes search.submit -->
+<search submit="submit"></search>
+<table>
+    <thead>
+        <tr>
+            <th>
+                Card Name
+            </th>
+            <th>
+                Series
+            </th>
+            <th>
+                Set
+            </th>
+        </tr>
+    </thead>
+    <tbody ng-repeat="card in searchResults">
+        <tr ng-click="search.getCardInfo(card.id)">
+            <td>
+                {{ card.name }}
+            </td>
+            <td>
+                {{ card.series }}
+            </td>
+            <td>
+                {{ card.set }}
+            </td>
+        </tr>
+    </tbody>
+</table>
