@@ -1,4 +1,3 @@
-// TODO: Make route /card-info/:id like in countries and capitals app?
 export function cardInfoRoute($routeProvider) {
     $routeProvider.when('/card-info/:id', {
         templateUrl: 'components/card-info/card-info.html',
@@ -22,6 +21,13 @@ export default class CardInfoCtrl {
 
         this.CollectionAppService.getCardById(this.id).then(function(response) {
             controller.card = response;
+        });
+    }
+
+    /* Adds the current card to the user's collection */
+    addCard() {
+        this.CollectionAppService.addToCollection(this.card).then(function(response) {
+            console.log(response);
         });
     }
 }
