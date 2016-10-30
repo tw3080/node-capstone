@@ -21,6 +21,7 @@ app.use(passport.session());
 
 /* Models */
 var User = require('./models/user');
+var Collection = require('./models/collection');
 
 function isLoggedIn(req, res, next) {
     if (req.isAuthenticated())
@@ -124,6 +125,7 @@ app.post('/users', jsonParser, function(req, res) {
                 });
             }
             var user = new User({
+                email: req.body.email,
                 username: username,
                 password: hash
             });
@@ -151,6 +153,27 @@ app.get('/logout', function(req, res){
 
 app.get('/test', isLoggedIn, function(req, res) {
     return res.status(200).json('ok');
+});
+
+/* Gets the user's collection based on user id */
+app.get('/collection', isLoggedIn, function(req, res) {
+    var query = { userId: req.user._id };
+    Collection.findOne(query, function(err, data) {
+        res.status(200).json(data);
+        console.log(data);
+    });
+});
+
+/* Adds a card (and information about that card) to the user's collection */
+app.post('/collection', isLoggedIn, function(req, res) {
+    var card = req.body.card;
+    var query = { userId: req.user._id, username: req.user.username };
+    update = { $push: { cardList: { card: card } }, $inc: { collectionSize: 1 } };
+    console.log(card);
+    Collection.findOneAndUpdate(query, update, { upsert: true, new: true }, function(err, data) {
+        res.status(201).json(data);
+        console.log(data);
+    });
 });
 
 /* Connect to the mongoose database and run the HTTP server */
