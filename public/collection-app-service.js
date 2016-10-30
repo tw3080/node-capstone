@@ -7,11 +7,12 @@ export default class CollectionAppService {
 
     /* Gets a list of cards by name of Pokemon */
     getCardsByName(name) {
+        var controller = this;
+        controller.showResults = false; // If false, don't show the search results
+
         this.params = {
             name: name
         };
-
-        var controller = this;
 
         return this.$http({
             method: 'GET',
@@ -19,6 +20,7 @@ export default class CollectionAppService {
             params: this.params
         }).then(function(response) {
             controller.searchResults = response.data.cards;
+            controller.showResults = true; // If true, show the search results
             return response.data.cards;
         });
     }
@@ -32,6 +34,7 @@ export default class CollectionAppService {
             url: 'https://api.pokemontcg.io/v1/cards/' + id,
             cache: true
         }).then(function(response) {
+            console.log(response.data.card);
             return response.data.card;
         });
     }
@@ -61,11 +64,22 @@ export default class CollectionAppService {
         });
     }
 
-    /* Testing */
+    /* Adds a card to the user's collection */
+    addToCollection(card) {
+        return this.$http({
+            method: 'POST',
+            url: '/collection',
+            data: {
+                card: card
+            }
+        });
+    }
+
+    /* Gets the user's collection */
     getCollection() {
         return this.$http({
             method: 'GET',
-            url: '/test'
+            url: '/collection'
         });
     }
 }
