@@ -3,12 +3,13 @@ import angular from 'angular';
 function search() {
     return {
         restrict: 'E',
-        templateUrl: './components/search/search.html',
+        templateUrl: './components/search/search-template.html',
         scope: {
-
+            submit: '=submit',
+            CollectionAppService: '=service'
         },
         link: function(scope, element, attrs) {
-            scope.stuff = 'whatever';
+            this.CollectionAppService = scope.CollectionAppService;
         }
     };
 }
