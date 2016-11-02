@@ -1,5 +1,4 @@
 node_modules
 .jshintrc
 webpack.config.js
-build/
 gulpfile.js
