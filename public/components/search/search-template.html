@@ -1,0 +1,14 @@
+<!-- Search form -->
+<form name="search.cardSearchForm" novalidate ng-submit="submit(search.cardName, search.cardSearchForm.$valid)">
+    <!-- Search bar -->
+    <div class="search-container">
+        <!-- Search text input -->
+        <input type="text" name="searchTerm" class="text-input search-text" ng-model="search.cardName" placeholder="Search by name, e.g. 'charizard'" required />
+        <!-- 'Search' button -->
+        <button type="submit" class="btn search-btn" value="Search">Search</button>
+    </div>
+</form>
+<!-- Display this error message if the search field is left empty -->
+<div ng-if="search.cardSearchForm.$submitted" ng-messages="search.cardSearchForm.searchTerm.$error">
+    <span ng-message="required">Search field cannot be empty</span>
+</div>
