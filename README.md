@@ -18,7 +18,7 @@ On the home screen, if the user isn't logged in, they're prompted to either logi
 
 If the user views the home screen after logging in, the login/signup buttons aren't displayed. Also, the navigation bar will now contain the 'collection' and 'logout' icons on every screen, in addition to the 'search' icon.
 
-### Signup
+### Sign up
 <p align="center">
     <img src="./public/assets/images/screenshots/signup.png">
 </p>
