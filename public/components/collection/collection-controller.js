@@ -7,43 +7,10 @@ export function collectionRoute($routeProvider) {
 }
 
 export default class CollectionCtrl {
-    constructor(CollectionAppService) {
-        var cards = CollectionAppService.getCardByName();
-        cards.then(card => {
-            console.log(card);
+    constructor(CollectionAppService, $scope) {
+        let controller = this;
+        CollectionAppService.getCollection().then(data => {
+            controller.collection = data.data;
         });
-        this.MOCK_USER_INFO = {
-            "username": "username",
-            "collectionSize": "11111",
-            "collection": [
-                {
-                    "card": {
-                        "id": "xy7-54",
-                        "name": "Gardevoir",
-                        "imageUrl": "https://s3.amazonaws.com/pokemontcg/xy7/54.png",
-                        "subtype": "Stage 2",
-                        "supertype": "Pokémon"
-                    }
-                },
-                {
-                    "card": {
-                        "id": "xy7-54",
-                        "name": "Gardevoir",
-                        "imageUrl": "https://s3.amazonaws.com/pokemontcg/xy7/54.png",
-                        "subtype": "Stage 2",
-                        "supertype": "Pokémon"
-                    }
-                },
-                {
-                    "card": {
-                        "id": "xy7-54",
-                        "name": "Gardevoir",
-                        "imageUrl": "https://s3.amazonaws.com/pokemontcg/xy7/54.png",
-                        "subtype": "Stage 2",
-                        "supertype": "Pokémon"
-                    }
-                }
-            ]
-        };
     }
 }
