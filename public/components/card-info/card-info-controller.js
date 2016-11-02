@@ -36,7 +36,7 @@ export default class CardInfoCtrl {
 
     /* Adds the current card to the user's collection */
     addCard() {
-        var controller = this;
+        let controller = this;
 
         this.CollectionAppService.addToCollection(this.card).then(function(response) {
             controller.cardAdded = true;
@@ -44,7 +44,7 @@ export default class CardInfoCtrl {
     }
 
     removeCard() {
-        var controller = this;
+        let controller = this;
 
         this.CollectionAppService.removeFromCollection(this._id).then(function(response) {
             controller.cardRemoved = true;
