@@ -1,0 +1,187 @@
+/**** PAGE STRUCTURE/SECTIONING ****/
+body {
+  background-color: #dedede;
+  font-family: 'Noto Sans', sans-serif;
+  margin: 0 auto;
+  margin: 4.6rem auto 0 auto;
+  max-width: 60rem;
+  text-transform: lowercase;
+}
+/* Wrapper for centering content outside of navigation */
+.main-container {
+  text-align: center;
+  margin: 0 1rem;
+}
+/* Wrapper for centering and giving a max-width to navigation */
+.nav-container {
+  margin: 0 auto;
+  max-width: 60rem;
+}
+/* Wrapper for adjusting margins of the card info page */
+.card-info-container {
+  margin: 0.5rem 0 1rem 0;
+}
+/**** HEADINGS/SECTIONING/TYPOGRAPHY ****/
+/* This text (on the card info page) is bolded for stylistic reasons */
+.important-text {
+  font-weight: 700;
+  text-transform: lowercase;
+}
+/* h1 text */
+.heading-text {
+  font-size: 1.5rem;
+}
+/**** LISTS (NAVIGATION) ****/
+.nav {
+  background-color: #000;
+  color: #000;
+  left: 0;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 9999;
+}
+.nav-list {
+  list-style: none;
+  margin: 0;
+  overflow: hidden;
+  padding: 0;
+}
+.nav-item {
+  display: inline;
+}
+.nav-left {
+  float: left;
+}
+.nav-right {
+  float: right;
+}
+.nav-link {
+  display: inline-block;
+  padding: 1rem;
+  text-align: center;
+  text-decoration: none;
+}
+.nav-link:hover {
+  cursor: pointer;
+}
+.nav-link:visited {
+  color: #fff;
+}
+.nav-title {
+  font-weight: 700;
+  text-transform: lowercase;
+}
+/**** MEDIA ****/
+/* Big Pikachu image on home page */
+.pikachu-greeting-img {
+  width: 70%;
+}
+/* Card thumbnails on collection page */
+.collection-thumbnail {
+  width: 50%;
+}
+/**** FORMS ****/
+/* General styles for all inputs */
+.text-input {
+  border: 2px solid #000;
+  border-radius: 3px;
+  box-sizing: border-box;
+  padding: 0.75rem;
+  font-family: 'Noto Sans', sans-serif;
+  margin: 0 auto 1rem auto;
+  text-transform: lowercase;
+  width: 100%;
+}
+.login-text,
+.signup-text {
+  display: block;
+  max-width: 22.1rem;
+}
+/* General styles for all buttons */
+.btn {
+  background: none;
+  border: 2px solid #000;
+  border-radius: 3px;
+  box-sizing: border-box;
+  padding: 0.75rem;
+  font-family: 'Noto Sans', sans-serif;
+  margin: 0 auto 1rem auto;
+  text-transform: lowercase;
+  width: 100%;
+  width: 7rem;
+}
+.btn:hover {
+  background: #000;
+  color: pink;
+  cursor: pointer;
+}
+.login-btn,
+.signup-btn {
+  margin: 0 0.5rem;
+}
+.collection-add-btn,
+.collection-remove-btn {
+  margin: 1rem 0.5rem 0 0.5rem;
+}
+.card-added {
+  background: green;
+}
+.card-added:hover {
+  background: green;
+}
+.card-removed {
+  background: red;
+}
+.card-removed:hover {
+  background: red;
+}
+/**** TABLES (SEARCH RESULTS) ****/
+.results-table {
+  border-collapse: collapse;
+  font-size: 0.8rem;
+  margin: 0 auto 1rem auto;
+  width: 100%;
+}
+.results-table-row {
+  border-bottom: 1px solid #000;
+}
+.results-link:hover {
+  cursor: pointer;
+}
+/* RESPONSIVENESS */
+@media only screen and (min-width: 388px) {
+  .collection-thumbnail {
+    max-width: 14rem;
+  }
+  .search-container {
+    width: 100%;
+  }
+  .search-text {
+    width: 64%;
+  }
+}
+/*
+@media only screen and (min-width: 513px) {
+    .card-info-container {
+        margin: 0 auto;
+    }
+
+    .card-info-text {
+        // float: left;
+        display: inline;
+        margin: 4.5rem 0 4.5rem 1rem;
+    }
+
+    .card-info-img {
+        // float: left;
+        display: inline;
+    }
+}
+*/
+@media only screen and (min-width: 963px) {
+  .results-table {
+    font-size: 1rem;
+  }
+}
+/*# sourceMappingURL=style.css.map */

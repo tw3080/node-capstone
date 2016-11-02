@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="collectionApp">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>Pok&eacute; Mongo</title>
+    <link rel="stylesheet" href="font-awesome/css/font-awesome.css" />
+    <link href="https://fonts.googleapis.com/css?family=Noto+Sans:400,700" rel="stylesheet">
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="nav" ng-controller="LoginCtrl as login">
+        <div class="nav-container">
+            <ul class="nav-list">
+                <!-- 'Poke Mongo' home page link -->
+                <li class="nav-item nav-left nav-title"><a class="nav-link" href="#/">Pok&eacute; Mongo</a></li>
+                <!-- Logout link -->
+                <li class="nav-item nav-right" ng-click="login.logout()" ng-show="login.CollectionAppService.isLoggedIn()"><a class="nav-link" href="#/"><i class="fa fa-sign-out fa-lg" aria-hidden="true"></i></a></li>
+                <!-- Collection link -->
+                <li class="nav-item nav-right" ng-show="login.CollectionAppService.isLoggedIn()"><a class="nav-link" href="#/collection"><i class="fa fa-th-large fa-lg" aria-hidden="true"></i></a></li>
+                <!-- Search link -->
+                <li class="nav-item nav-right"><a class="nav-link" href="#/search"><i class="fa fa-search fa-lg" aria-hidden="true"></i></a></li>
+            </ul>
+        </div>
+    </nav>
+    <!-- Views -->
+    <div ng-view></div>
+    <!-- JavaScript -->
+    <script src="node-capstone.1.0.0.js"></script>
+</body>
+
+</html>

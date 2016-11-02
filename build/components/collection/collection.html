@@ -1,0 +1,19 @@
+<div class="main-container">
+    <!-- This message only displays if the user's collection is empty -->
+    <div ng-if="!collection.collection || collection.collection.collectionSize === 0">
+        <p>
+            <strong>Your collection is empty :(</strong>
+        </p>
+        <p>
+            Click the magnifying glass to start searching for cards to add to your collection!
+        </p>
+    </div>
+    <!-- The collection only displays if the user has added at least one card to their collection -->
+    <div ng-if="collection.collection && collection.collection.collectionSize !== 0">
+        <h1 class="heading-text">{{ collection.collection.username }}'s Collection</h1>
+        <span class="important-text">No. Collected: </span>{{ collection.collection.collectionSize }}<br />
+        <span class="important-text">Collection: </span><br />
+        <!-- Images of cards in collection -->
+        <span ng-repeat="cards in collection.collection.cardList"><a href="#/card-info/{{ cards.card.id }}/{{ cards._id }}"><img class="collection-thumbnail" ng-src="{{ cards.card.imageUrl }}" /></a></span>
+    </div>
+</div>

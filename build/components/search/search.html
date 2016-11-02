@@ -1,0 +1,34 @@
+<div class="main-container">
+    <!-- Search bar directive -->
+    <search submit="search.submit" service="search.CollectionAppService" controller="search"></search>
+    <!-- Search results table -->
+    <table class="results-table" ng-show="search.CollectionAppService.showResults">
+        <thead>
+            <tr>
+                <th>
+                    Card Name
+                </th>
+                <th>
+                    Series
+                </th>
+                <th>
+                    Set
+                </th>
+            </tr>
+        </thead>
+        <!-- Display information for each card returned -->
+        <tbody ng-repeat="card in search.CollectionAppService.searchResults">
+            <tr class="results-table-row" ng-click="search.getCardInfo(card.id)">
+                <td class="results-link">
+                    {{ card.name }}
+                </td>
+                <td class="results-link">
+                    {{ card.series }}
+                </td>
+                <td class="results-link">
+                    {{ card.set }}
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

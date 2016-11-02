@@ -1,0 +1,24 @@
+<div class="main-container">
+    <!-- Signup form -->
+    <form name="signupForm" novalidate ng-submit="signup.signUp()">
+        <!-- Username input -->
+        <input type="text" name="username" class="text-input signup-text" ng-model="signup.username" placeholder="Username" required />
+        <!-- Password input -->
+        <input type="password" name="password" class="text-input signup-text" ng-model="signup.password" placeholder="Password" required />
+        <!-- 'Sign up' button -->
+        <button type="submit" class="btn" value="Sign Up">Sign Up</button>
+        <!-- Error messages which display only after form has been submitted -->
+        <div ng-if="signupForm.$submitted" ng-messages="signupForm.username.$error">
+            <!-- Display if username field is left empty -->
+            <span ng-message="required">Username is required</span>
+        </div>
+        <div ng-if="signupForm.$submitted" ng-messages="signupForm.password.$error">
+            <!-- Display if password field is left empty -->
+            <span ng-message="required">Password is required</span>
+        </div>
+        <div ng-if="signupForm.$submitted">
+            <!-- Display if username has already been registered -->
+            <span ng-show="signup.isDuplicate">Username is taken</span>
+        </div>
+    </form>
+</div>

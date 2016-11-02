@@ -1,0 +1,18 @@
+<div class="main-container">
+    <!-- Pikachu header image -->
+    <img class="pikachu-greeting-img" src="../assets/images/pikachu-greeting.png" />
+    <!-- App description -->
+    <p>
+        <b>Pok&eacute; Mongo</b> helps you keep track of your Pok&eacute;mon card collection; you can search for cards, view information about cards, and add cards to your virtual "collection".
+    </p>
+    <p>
+        To get started, just sign up and start searching for the cards you own!
+    </p>
+    <!-- The login/signup buttons only display if the user is not logged in -->
+    <div ng-if="!home.CollectionAppService.isLoggedIn()">
+        <!-- Login button -->
+        <a href="#/login"><button class="btn login-btn">Login</button></a>
+        <!-- Signup button -->
+        <a href="#/signup"><button class="btn signup-btn">Signup</button></a>
+    </div>
+</div>
