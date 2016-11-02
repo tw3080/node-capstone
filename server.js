@@ -24,9 +24,16 @@ var User = require('./models/user');
 var Collection = require('./models/collection');
 
 function isLoggedIn(req, res, next) {
-    if (req.isAuthenticated())
+    /* For production */
+    if (req.isAuthenticated()) {
         return next();
-    res.redirect('/');
+    }
+    /* For testing, inject a user manually */
+    if (process.env.NODE_ENV !== 'production' ) {
+        req.user = { '_id': '1', 'username': 'test', 'password': 'test' };
+        return next();
+    }
+    res.sendStatus(403);
 }
 
 /* Passport authentication */
@@ -59,7 +66,6 @@ function passvalidatePassword(password, userpassword, callback) {
 }
 passport.serializeUser(function(user, done) {
     done(null, user.id);
-    console.log(user.id);
 });
 
 passport.deserializeUser(function(id, done) {
@@ -125,17 +131,22 @@ app.post('/users', jsonParser, function(req, res) {
                 });
             }
             var user = new User({
-                email: req.body.email,
                 username: username,
                 password: hash
             });
             user.save(function(err) {
                 if (err) {
+                    /* If the username is a duplicate, send an error message to the client */
+                    if (err.message.startsWith('E11000 duplicate key error collection')) {
+                        return res.status(500).json({
+                            message: 'Username is already taken'
+                        });
+                    }
                     return res.status(500).json({
                         message: 'Internal server error 3'
                     });
                 }
-                return res.status(201).json({});
+                return res.status(201).json(user);
             });
         });
     });
@@ -143,16 +154,13 @@ app.post('/users', jsonParser, function(req, res) {
 
 /* Logging in */
 app.post('/login', passport.authenticate('local'), function(req, res) {
-    return res.status(200).json({});
+    return res.status(200).json(req.user);
 });
+
 /* Logging out */
 app.get('/logout', function(req, res){
     req.logout();
     res.redirect('/');
-});
-
-app.get('/test', isLoggedIn, function(req, res) {
-    return res.status(200).json('ok');
 });
 
 /* Gets the user's collection based on user id */
@@ -160,7 +168,6 @@ app.get('/collection', isLoggedIn, function(req, res) {
     var query = { userId: req.user._id };
     Collection.findOne(query, function(err, data) {
         res.status(200).json(data);
-        console.log(data);
     });
 });
 
@@ -168,11 +175,18 @@ app.get('/collection', isLoggedIn, function(req, res) {
 app.post('/collection', isLoggedIn, function(req, res) {
     var card = req.body.card;
     var query = { userId: req.user._id, username: req.user.username };
-    update = { $push: { cardList: { card: card } }, $inc: { collectionSize: 1 } };
-    console.log(card);
+    card = { id: card.id, name: card.name, imageUrl: card.imageUrl };
+    var update = { $push: { cardList: { card: card, id: card.id } }, $inc: { collectionSize: 1 } };
     Collection.findOneAndUpdate(query, update, { upsert: true, new: true }, function(err, data) {
         res.status(201).json(data);
-        console.log(data);
+    });
+});
+
+app.delete('/collection/:id', isLoggedIn, function(req, res) {
+    var query = { userId: req.user._id, username: req.user.username };
+    var update = { $pull: { cardList: { _id: req.params.id } }, $inc: { collectionSize: -1 } };
+    Collection.findOneAndUpdate(query, update, function(err, data) {
+        res.status(200).json(data);
     });
 });
 
