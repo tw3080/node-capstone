@@ -1,4 +1,9 @@
 export function cardInfoRoute($routeProvider) {
+    $routeProvider.when('/card-info/:id/:_id', {
+        templateUrl: 'components/card-info/card-info.html',
+        controller: 'CardInfoCtrl',
+        controllerAs: 'cardInfo'
+    });
     $routeProvider.when('/card-info/:id', {
         templateUrl: 'components/card-info/card-info.html',
         controller: 'CardInfoCtrl',
@@ -10,6 +15,11 @@ export default class CardInfoCtrl {
     constructor(CollectionAppService, $routeParams) {
         this.CollectionAppService = CollectionAppService;
         this.id = $routeParams.id; // Set the id variable equal to the value of the route parameter's id
+        this._id = $routeParams._id; // Set the id variable equal to the value of the route parameter's _id
+
+        /* These values determine what color the add/remove buttons should be; if false, the button(s) will have the standard style, but if true, the button(s) will turn green (card added) or red (card removed) */
+        this.cardAdded = false;
+        this.cardRemoved = false;
 
         this.getCardInfo();
     }
@@ -26,8 +36,18 @@ export default class CardInfoCtrl {
 
     /* Adds the current card to the user's collection */
     addCard() {
+        var controller = this;
+
         this.CollectionAppService.addToCollection(this.card).then(function(response) {
-            console.log(response);
+            controller.cardAdded = true;
+        });
+    }
+
+    removeCard() {
+        var controller = this;
+
+        this.CollectionAppService.removeFromCollection(this._id).then(function(response) {
+            controller.cardRemoved = true;
         });
     }
 }

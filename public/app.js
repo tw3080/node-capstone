@@ -11,7 +11,7 @@ import SignupCtrl, { signupRoute } from './components/signup/signup-controller';
 import search from './components/search/search-directive';
 import CollectionAppService from './collection-app-service';
 
-var collectionApp = angular.module('collectionApp', ['collectionAppViews', search, 'ngRoute', 'ngMessages'])
+let collectionApp = angular.module('collectionApp', ['collectionAppViews', search, 'ngRoute', 'ngMessages'])
     .config(homeRoute)
     .controller('HomeCtrl', HomeCtrl)
     .config(collectionRoute)
