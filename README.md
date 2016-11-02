@@ -10,6 +10,8 @@ Pok&eacute; Mongo is an app for helping people to quickly view and manage their 
 
 ### Home
 <p align="center">
+    <img src="./public/assets/images/screenshots/home.png">
+    <img src="./public/assets/images/screenshots/home-logged-in.png">
     ![Home screen, not logged in](./public/assets/images/screenshots/home.png)
     ![Home screen, logged in](./public/assets/images/screenshots/home-logged-in.png)
 </p>
@@ -20,6 +22,7 @@ If the user views the home screen after logging in, the login/signup buttons are
 
 ### Signup
 <p align="center">
+    <img src="./public/assets/images/screenshots/signup.png">
     ![Sign up screen](./public/assets/images/screenshots/signup.png)
 </p>
 
@@ -27,6 +30,7 @@ On the sign up screen, the user can create a new account with a username and pas
 
 ### Login
 <p align="center">
+    <img src="./public/assets/images/screenshots/login.png">
     ![Login screen](./public/assets/images/screenshots/login.png)
 </p>
 
@@ -34,6 +38,8 @@ On the login screen, the user can login using their registered credentials. Afte
 
 ### Collection
 <p align="center">
+    <img src="./public/assets/images/screenshots/collection.png">
+    <img src="./public/assets/images/screenshots/empty-collection.png">
     ![Collection with cards](./public/assets/images/screenshots/collection.png)
     ![Empty collection](./public/assets/images/screenshots/empty-collection.png)
 </p>
@@ -44,6 +50,7 @@ If the user doesn't have any cards in their collection, a message will display w
 
 ### Search
 <p align="center">
+    <img src="./public/assets/images/screenshots/search.png">
     ![Search screen](./public/assets/images/screenshots/search.png)
 </p>
 
@@ -51,6 +58,8 @@ On the search screen, the user can search for Pok&eacute;mon cards based on the 
 
 ### Card Info
 <p align="center">
+    <img src="./public/assets/images/screenshots/card-info.png">
+    <img src="./public/assets/images/screenshots/card-info-not-logged-in.png">
     ![Card info screen, logged in](./public/assets/images/screenshots/card-info.png)
     ![Card info screen, not logged in](./public/assets/images/screenshots/card-info-not-logged-in.png)
 </p>
@@ -61,6 +70,8 @@ If the user isn't logged in, the 'add card' and 'remove card' buttons will be re
 
 
 <p align="center">
+    <img src="./public/assets/images/screenshots/card-added.png">
+    <img src="./public/assets/images/screenshots/card-removed.png">
     ![Card info screen, after card added](./public/assets/images/screenshots/card-added.png)
     ![Card info screen, after card removed](./public/assets/images/screenshots/card-removed.png)
 </p>
