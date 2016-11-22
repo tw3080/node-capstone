@@ -1,6 +1,7 @@
 import angular from 'angular';
 import ngRoute from 'angular-route';
 import ngMessage from 'angular-messages';
+import ngAnimate from 'angular-animate';
 import viewsModule from './views';
 import HomeCtrl, { homeRoute } from './components/home/home-controller';
 import CollectionCtrl, { collectionRoute } from './components/collection/collection-controller';
@@ -11,7 +12,7 @@ import SignupCtrl, { signupRoute } from './components/signup/signup-controller';
 import search from './components/search/search-directive';
 import CollectionAppService from './collection-app-service';
 
-let collectionApp = angular.module('collectionApp', ['collectionAppViews', search, 'ngRoute', 'ngMessages'])
+let collectionApp = angular.module('collectionApp', ['collectionAppViews', search, 'ngRoute', 'ngMessages', 'ngAnimate'])
     .config(homeRoute)
     .controller('HomeCtrl', HomeCtrl)
     .config(collectionRoute)
@@ -29,4 +30,7 @@ let collectionApp = angular.module('collectionApp', ['collectionAppViews', searc
         $routeProvider.otherwise({
             redirectTo: '/'
         });
+    })
+    .config(function($animateProvider) { // Only animate elements with the 'angular-animate' class
+        $animateProvider.classNameFilter(/angular-animate/);
     });
