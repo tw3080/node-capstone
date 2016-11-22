@@ -1,28 +1,30 @@
 <div class="main-container">
-    <!-- Card name -->
-    <h1 class="heading-text">{{ cardInfo.card.name }}</h1>
-    <!-- Card image -->
-    <img class="card-info-img" ng-src="{{ cardInfo.card.imageUrl }}" />
-    <div class="card-info-container">
-        <div class="card-info-text">
-            <!-- Card info text -->
-            <span class="important-text">National Pokedex Number: </span>{{ cardInfo.card.nationalPokedexNumber }}<br />
-            <span class="important-text">Rarity: </span>{{ cardInfo.card.rarity }}<br />
-            <span class="important-text">Series: </span>{{ cardInfo.card.series }}<br />
-            <span class="important-text">Set: </span>{{ cardInfo.card.set }}<br />
-            <span class="important-text">Types: </span><span ng-repeat="type in cardInfo.card.types">{{ type }}</span>
-            <!-- Message prompting user to login or signup to add cards to their collection; only shows if the user is not logged in -->
-            <p ng-show="!cardInfo.CollectionAppService.isLoggedIn()"><a href="#/login">Login</a> or <a href="#/signup">sign up</a> to add this card to your collection!</p>
-            <!-- 'Add card'/'remove card' buttons; only show if the user is logged in -->
-            <div ng-show="cardInfo.CollectionAppService.isLoggedIn()">
-                <!-- 'Add card' button -->
-                <button class="btn collection-add-btn" ng-class="{ 'card-added': cardInfo.cardAdded }" ng-show="!cardInfo.cardAdded" ng-click="cardInfo.addCard()">Add Card</button>
-                <!-- 'Added' button; only shows after the user clicks the 'add card' button -->
-                <button class="btn collection-add-btn" ng-class="{ 'card-added': cardInfo.cardAdded }" ng-show="cardInfo.cardAdded" ng-click="cardInfo.addCard()">Added</button>
-                <!-- 'Remove card' button -->
-                <button class="btn collection-remove-btn" ng-class="{ 'card-removed': cardInfo.cardRemoved }" ng-show="!cardInfo.cardRemoved" ng-click="cardInfo.removeCard()">Remove Card</button>
-                <!-- 'Removed' button; only shows after the user clicks the 'remove card' button -->
-                <button class="btn collection-remove-btn" ng-class="{ 'card-removed': cardInfo.cardRemoved }" ng-show="cardInfo.cardRemoved" ng-click="cardInfo.removeCard()">Removed</button>
+    <div class="content-container">
+        <!-- Card name -->
+        <h1 class="heading-text">{{ cardInfo.card.name }}</h1>
+        <!-- Card image -->
+        <img class="card-img" ng-src="{{ cardInfo.card.imageUrl }}" />
+        <div class="card-info-container">
+            <div class="description-text">
+                <!-- Card info text -->
+                <span class="important-text">Pok&eacute;dex #: </span>{{ cardInfo.card.nationalPokedexNumber }}<br />
+                <span class="important-text">Rarity: </span>{{ cardInfo.card.rarity }}<br />
+                <span class="important-text">Series: </span>{{ cardInfo.card.series }}<br />
+                <span class="important-text">Set: </span>{{ cardInfo.card.set }}<br />
+                <span class="important-text">Types: </span><span ng-repeat="type in cardInfo.card.types">{{ type }}</span>
+                <!-- Message prompting user to login or signup to add cards to their collection; only shows if the user is not logged in -->
+                <p ng-show="!cardInfo.CollectionAppService.isLoggedIn()"><a href="#/login">Login</a> or <a href="#/signup">sign up</a> to add this card to your collection!</p>
+                <!-- 'Add card'/'remove card' buttons; only show if the user is logged in -->
+                <div ng-show="cardInfo.CollectionAppService.isLoggedIn()">
+                    <!-- 'Add card' button; only show if the card hasn't been added to the collection AND is being viewed through search (not through the collection) -->
+                    <button class="btn collection-add-btn" ng-class="{ 'card-added': cardInfo.cardAdded }" ng-show="!cardInfo.cardAdded && !cardInfo._id" ng-click="cardInfo.addCard()">Add Card</button>
+                    <!-- 'Added' button; only shows after the user clicks the 'add card' button -->
+                    <button class="btn collection-add-btn" ng-class="{ 'card-added': cardInfo.cardAdded }" ng-show="cardInfo.cardAdded">Added</button>
+                    <!-- 'Remove card' button; only show if the card hasn't been removed from the collection AND the card is being viewed through the collection (not searched for) -->
+                    <button class="btn collection-remove-btn" ng-class="{ 'card-removed': cardInfo.cardRemoved }" ng-show="!cardInfo.cardRemoved && cardInfo._id" ng-click="cardInfo.removeCard()">Remove Card</button>
+                    <!-- 'Removed' button; only shows after the user clicks the 'remove card' button -->
+                    <button class="btn collection-remove-btn" ng-class="{ 'card-removed': cardInfo.cardRemoved }" ng-show="cardInfo.cardRemoved">Removed</button>
+                </div>
             </div>
         </div>
     </div>
