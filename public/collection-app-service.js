@@ -21,6 +21,7 @@ export default class CollectionAppService {
             params: this.params
         }).then(function(response) {
             controller.searchResults = response.data.cards;
+            console.log(controller.searchResults);
             controller.showResults = true; // If true, show the search results
             return response.data.cards;
         });
@@ -78,6 +79,14 @@ export default class CollectionAppService {
         }
     }
 
+    /* Gets the user's collection */
+    getCollection() {
+        return this.$http({
+            method: 'GET',
+            url: '/collection'
+        });
+    }
+
     /* Adds a card to the user's collection */
     addToCollection(card) {
         var controller = this;
@@ -107,14 +116,6 @@ export default class CollectionAppService {
             }
         }).then(function(response) {
             controller.cardRemovedMsg = true; // If true, show the message confirming the card was removed from the collection
-        });
-    }
-
-    /* Gets the user's collection */
-    getCollection() {
-        return this.$http({
-            method: 'GET',
-            url: '/collection'
         });
     }
 }
