@@ -1,20 +1,31 @@
 <div class="main-container">
-    <!-- Login form -->
-    <form name="loginForm" ng-submit="login.login()" novalidate>
-        <!-- Username input -->
-        <input type="text" name="username" class="text-input login-text" ng-model="login.username" placeholder="Username" required />
-        <!-- Password input -->
-        <input type="password" name="password" class="text-input login-text" ng-model="login.password" placeholder="Password" required />
-        <!-- 'Login' button -->
-        <button type="submit" class="btn" value="Login">Login</button>
-        <!-- Error messages which only display after the form has been submitted-->
-        <div ng-if="loginForm.$submitted" ng-messages="loginForm.username.$error">
-            <!-- If the 'username' field is empty, display this message -->
-            <span ng-message="required">Username is required</span>
-        </div>
-        <div ng-if="loginForm.$submitted" ng-messages="loginForm.password.$error">
-            <!-- If the password field is empty, display this message -->
-            <span ng-message="required">Password is required</span>
-        </div>
-    </form>
+    <div class="content-container">
+        <h1 class="heading-text">Login</h1>
+        <!-- Login form -->
+        <form name="loginForm" ng-submit="login.login()" novalidate>
+            <!-- Username input -->
+            <input type="text" name="username" class="text-input login-text" ng-model="login.username" placeholder="Username" required />
+            <!-- Password input -->
+            <input type="password" name="password" class="text-input login-text" ng-model="login.password" placeholder="Password" required />
+            <!-- 'Login' button -->
+            <button type="submit" class="btn" value="Login">Login</button>
+            <!-- Error messages (only display if the form has been submitted) -->
+            <div class="angular-animate animate-fade" ng-show="loginForm.$submitted">
+                <!-- If the 'username' field is empty, show this message -->
+                <p class="error-text angular-animate animate-fade" ng-show="loginForm.username.$error.required">
+                    Username required
+                </p>
+                <!-- If the 'password' field is empty, show this message -->
+                <p class="error-text angular-animate animate-fade" ng-show="loginForm.password.$error.required">
+                    Password required
+                </p>
+            </div>
+            <div class="angular-animate animate-fade" ng-show="loginForm.$submitted && loginForm.$valid && login.badCredentials">
+                <!-- If the user tries to login with invalid credentials, show this message -->
+                <p class="error-text angular-animate animate-fade">
+                    Invalid username and/or password
+                </p>
+            </div>
+        </form>
+    </div>
 </div>

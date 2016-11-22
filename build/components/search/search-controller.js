@@ -8,8 +8,6 @@ export function searchRoute($routeProvider) {
 
 export default class SearchCtrl {
     constructor(CollectionAppService, $scope, $location) {
-        this.searchResults = CollectionAppService.searchResults;
-        this.showResults = CollectionAppService.showResults;
         this.location = $location; // Setting '$location' to a variable in order to use it outside the constructor function
         this.CollectionAppService = CollectionAppService;
         this.cardName = '';

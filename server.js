@@ -40,13 +40,15 @@ function isLoggedIn(req, res, next) {
 passport.use('local', new LocalStrategy(
   function(username, password, done) {
     User.findOne({ username: username }, function (err, user) {
-      if (err) { return done(err); }
+      if (err) {
+          return done(err);
+      }
       if (!user) {
-        return done(null, false, { message: 'Incorrect username.' });
+        return done(null, false, { message: 'Incorrect username' });
         }
-        passvalidatePassword(password, user.password, function(error){
-            if(error) {
-                return done(null, false, { message: 'Incorrect password.' });
+        passvalidatePassword(password, user.password, function(error, isValid){
+            if(error || !isValid) {
+                return done(null, false, { message: 'Incorrect password' });
             } else {
                 return done(null, user);
             }
@@ -176,8 +178,13 @@ app.post('/collection', isLoggedIn, function(req, res) {
     var card = req.body.card;
     var query = { userId: req.user._id, username: req.user.username };
     card = { id: card.id, name: card.name, imageUrl: card.imageUrl };
+
+    console.log(card);
+    console.log(card.id);
+
     var update = { $push: { cardList: { card: card, id: card.id } }, $inc: { collectionSize: 1 } };
     Collection.findOneAndUpdate(query, update, { upsert: true, new: true }, function(err, data) {
+        console.log(err);
         res.status(201).json(data);
     });
 });
@@ -185,6 +192,9 @@ app.post('/collection', isLoggedIn, function(req, res) {
 app.delete('/collection/:id', isLoggedIn, function(req, res) {
     var query = { userId: req.user._id, username: req.user.username };
     var update = { $pull: { cardList: { _id: req.params.id } }, $inc: { collectionSize: -1 } };
+
+    console.log('deleted card');
+
     Collection.findOneAndUpdate(query, update, function(err, data) {
         res.status(200).json(data);
     });

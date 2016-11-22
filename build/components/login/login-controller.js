@@ -12,6 +12,8 @@ export default class LoginCtrl {
         this.location = $location; // Setting '$location' to a variable in order to use it outside the constructor function
         this.username = ''; // Bound to username input field in login view
         this.password = ''; // Bound to password input field in login view
+
+        this.badCredentials = false; // For displaying an error message when the user enters incorrect login credentials
     }
 
     /* Logs the user into their account */
@@ -21,6 +23,11 @@ export default class LoginCtrl {
         this.CollectionAppService.userLogin(this.username, this.password).then(data => {
             this.CollectionAppService.user = data;
             $location.path('/collection'); // On successful login, redirect the user to their collection page
+        }, data => {
+            // If the username is already registered, alert the user
+            if (data.data.message == 'Incorrect username' || 'Incorrect password') {
+                this.badCredentials = true; // Set to true because login credentials don't match any existing user
+            }
         });
     }
 

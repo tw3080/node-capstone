@@ -6,7 +6,7 @@ var collectionSchema = new Schema({
     username: String,
     collectionSize: Number,
     cardList: [{
-        card: { unique: true, type: Object }
+        card: { type: Object }
     }]
 });
 
