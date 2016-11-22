@@ -7,7 +7,9 @@
         <input type="text" name="searchTerm" class="text-input search-text" ng-model="search.cardName" placeholder="Search by name, e.g. 'charizard'" required />
     </div>
 </form>
-<!-- Display this error message if the search field is left empty -->
-<div ng-if="search.cardSearchForm.$submitted" ng-messages="search.cardSearchForm.searchTerm.$error">
-    <span ng-message="required">Please enter a Pok&eacute;mon name</span>
+<!-- If the search field is left empty, display this error message -->
+<div class="angular-animate animate-fade" ng-show="search.cardSearchForm.$submitted">
+    <p class="error-text angular-animate animate-fade" ng-show="search.cardSearchForm.searchTerm.$error.required">
+        Please enter a Pok&eacute;mon name
+    </p>
 </div>

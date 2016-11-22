@@ -3,8 +3,11 @@
         <h1 class="heading-text">Search</h1>
         <!-- Search bar directive -->
         <search submit="search.submit" service="search.CollectionAppService" controller="search"></search>
-        <div ng-show="search.CollectionAppService.searchResults.length === 0">
-            No results found :(
+        <!-- If no search results are returned, show this message -->
+        <div class="angular-animate animate-fade" ng-show="search.CollectionAppService.searchResults.length === 0">
+            <p class="error-text angular-animate animate-fade">
+                No results found :(
+            </p>
         </div>
         <!-- Search results table -->
         <table class="results-table angular-animate animate-fade" ng-show="search.CollectionAppService.showResults && search.CollectionAppService.searchResults.length !== 0">
