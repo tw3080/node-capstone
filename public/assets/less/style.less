@@ -1,40 +1,25 @@
 @accent-color: #fff;
 @nav-txt: #fff;
+@body-txt: @nav-txt;
 @bg-color: #1e1f3a;
 @btn-color: #7A96A3;
 @btn-hover-color: #6A6E98;
 @added-btn-color: #90986A;
 @removed-btn-color: #986A6A;
 @error-text: @removed-btn-color;
+@search-bar-icon: #A9A9A9;
+
 /**** PAGE STRUCTURE/SECTIONING ****/
+
 html {
     height: 100%;
 }
 
 body {
-    // background-color: @bg-color;
-    /*
-    background-image:
-        linear-gradient(
-        rgba(30, 31, 58, 0.9),
-        rgba(30, 31, 58, 0.9)
-        ), url(../assets/images/poke-mongo-header-dark.png);
+    background-image: url(../assets/images/poke-mongo-bg.png);
+    background-position: center;
     background-repeat: repeat;
-    */
-    // background-position: center;
-    background-attachment: fixed;
-    font-family: 'Open Sans', sans-serif;
-    background: #fbc300;
-    /* For browsers that do not support gradients */
-    background: -webkit-linear-gradient(left top, #fbc300, #fbef00);
-    /* For Safari 5.1 to 6.0 */
-    background: -o-linear-gradient(bottom right, #fbc300, #fbef00);
-    /* For Opera 11.1 to 12.0 */
-    background: -moz-linear-gradient(bottom right, #fbc300, #fbef00);
-    /* For Firefox 3.6 to 15 */
-    background: linear-gradient(to bottom right, @bg-color, @btn-hover-color);
-    /* Standard syntax */
-    color: @accent-color;
+    color: @body-txt;
     font-family: 'Noto Sans', sans-serif;
     margin: 0 auto;
 }
@@ -48,12 +33,15 @@ body {
 /* Wrapper for centering content outside of navigation */
 .main-container {
     text-align: center;
-    margin: 3.1rem auto 1rem;
+    margin: 3.1rem auto 1rem auto;
     max-width: 60rem;
 }
 /* Wrapper for centering and giving a max-width to navigation */
 .nav-container {
     background-color: @btn-hover-color;
+    -moz-box-shadow: 0 3px 10px rgba(0,0,0,0.5);
+    -webkit-box-shadow: 0 3px 10px rgba(0,0,0,0.5);
+    box-shadow: 0 3px 10px rgba(0,0,0,0.5);
 }
 
 .content-container {
@@ -148,22 +136,6 @@ body {
 }
 /**** MEDIA ****/
 /* Card thumbnails on collection page */
-.masthead {
-    /*
-    background-image:
-        linear-gradient(
-        rgba(30, 31, 58, 0.9),
-        rgba(30, 31, 58, 0.9)
-        ), url(../assets/images/poke-mongo-header-dark.png);
-    // background-image: url(../assets/images/poke-mongo-header-dark.png);
-    background-repeat: repeat-x;
-    background-position: center;
-    border-bottom: 1rem solid #6A6E98;
-    padding: 4.5rem 0;
-    margin-top: 3.1rem;
-    */
-}
-
 .collection-thumbnail {
     margin: 0.5rem;
     -moz-transition: 0.15s ease all;
@@ -214,13 +186,13 @@ body {
 }
 
 .search-icon {
-    color: #A9A9A9;
+    color: @search-bar-icon;
     margin: 1.06rem 1rem;
     position: absolute;
 }
 /* General styles for all buttons */
 .btn {
-    color: #fff;
+    color: @body-txt;
     background: @btn-color;
     margin-bottom: 0.3rem;
     -moz-box-shadow: 0 3px 10px rgba(0,0,0,0.5);
@@ -240,7 +212,7 @@ body {
         -webkit-transform: translate(0, -1px);
         transform: translate(0, -1px);
         background: @btn-hover-color;
-        color: #fff;
+        color: @body-txt;
         cursor: pointer;
     }
 
@@ -310,17 +282,23 @@ body {
 }
 
 /* IMAGES */
+
+/* Card images */
 .card-img {
     background-color: @btn-hover-color;
     border: 4px solid @btn-hover-color;
     border-radius: 3px;
     height: auto;
-    // margin: 0.5rem;
-    max-height: 300px;
+    max-height: 200px;
     -moz-box-shadow: 0 3px 10px rgba(0,0,0,0.5);
     -webkit-box-shadow: 0 3px 10px rgba(0,0,0,0.5);
     box-shadow: 0 3px 10px rgba(0,0,0,0.5);
     width: auto;
+}
+
+/* Home screen Pikachu greeting gif */
+.pikachu-img {
+    max-width: 50%;
 }
 
 /* ANIMATIONS */
@@ -383,7 +361,7 @@ body {
 }
 
 .loader {
-    color: #ffffff;
+    color: @body-txt;
     font-size: 10px;
     margin: 80px auto;
     position: absolute;
@@ -449,20 +427,25 @@ body {
         max-width: 14rem;
     }
 }
-@media only screen and (min-width: 769px) {
-    /*
-    .masthead {
-        background-image: url(../assets/images/poke-mongo-header-dark.png);
-        background-repeat: repeat-x;
-        background-position: center;
-        border-bottom: 1rem solid #6A6E98;
-        padding: 15.65rem 0;
-        margin-top: 3.1rem;
+@media only screen and (min-width: 768px) {
+    .main-container {
+        margin: 3.75rem auto 1rem auto;
     }
-    */
-}
-@media only screen and (min-width: 963px) {
+
+    .nav-container,
+    .description-text,
+    .results-table-head,
     .results-table {
-        font-size: 1rem;
+        font-size: 1.5rem;
+    }
+
+    .description-text {
+        // font-size: 1.5rem;
+        line-height: 2rem;
+        max-width: 28rem;
+    }
+
+    .card-img {
+        max-height: 300px;
     }
 }
