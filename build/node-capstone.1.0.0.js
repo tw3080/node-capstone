@@ -37916,7 +37916,7 @@
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 	
 	var CollectionAppService = function () {
-	    function CollectionAppService($http) {
+	    function CollectionAppService($http, $timeout) {
 	        _classCallCheck(this, CollectionAppService);
 	
 	        this.$http = $http;
@@ -37931,6 +37931,7 @@
 	        value: function getCardsByName(name) {
 	            var controller = this;
 	            controller.showResults = false; // If false, don't show the search results
+	            controller.isLoading = true; // If true, show the loader animation on the search page
 	
 	            this.params = {
 	                name: name
@@ -37942,8 +37943,9 @@
 	                params: this.params
 	            }).then(function (response) {
 	                controller.searchResults = response.data.cards;
-	                console.log(controller.searchResults);
+	                // console.log(controller.searchResults);
 	                controller.showResults = true; // If true, show the search results
+	                controller.isLoading = false; // If false, hide the loader animation on the search page
 	                return response.data.cards;
 	            });
 	        }
@@ -37960,7 +37962,6 @@
 	                url: 'https://api.pokemontcg.io/v1/cards/' + id,
 	                cache: true
 	            }).then(function (response) {
-	                console.log(response.data.card);
 	                return response.data.card;
 	            });
 	        }
