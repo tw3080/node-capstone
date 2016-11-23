@@ -1,22 +1,20 @@
-<!-- Header image -->
-<header class="masthead">
-    <!-- Content -->
-    <div class="main-container">
-        <!-- App description -->
-        <div class="content-container">
-            <p class="description-text">
-                <b>Pok&eacute; Mongo</b> helps you keep track of your Pok&eacute;mon card collection; you can search for cards, view information about cards, and add cards to your virtual "collection."
-            </p>
-            <p class="description-text">
-                Click <a href="#/search">here</a> to start searching for your favorite cards!
-            </p>
-            <!-- The login/signup buttons only display if the user is not logged in -->
-            <div ng-if="!home.CollectionAppService.isLoggedIn()">
-                <!-- Login button -->
-                <a href="#/login"><button class="btn">Login</button></a>
-                <!-- Signup button -->
-                <a href="#/signup"><button class="btn">Signup</button></a>
-            </div>
+<!-- Content -->
+<div class="main-container">
+    <!-- App description -->
+    <div class="content-container">
+        <img class="pikachu-img" src="../assets/images/pikachu-greeting.gif" />
+        <p class="description-text">
+            <b>Pok&eacute; Mongo</b> helps you keep track of your Pok&eacute;mon card collection; you can search for cards, view information about cards, and add cards to your virtual "collection."
+        </p>
+        <p class="description-text">
+            Click <a href="#/search">here</a> to start searching for your favorite cards!
+        </p>
+        <!-- The login/signup buttons only display if the user is not logged in -->
+        <div ng-if="!home.CollectionAppService.isLoggedIn()">
+            <!-- Login button -->
+            <a href="#/login"><button class="btn">Login</button></a>
+            <!-- Signup button -->
+            <a href="#/signup"><button class="btn">Signup</button></a>
         </div>
     </div>
-</header>
+</div>
