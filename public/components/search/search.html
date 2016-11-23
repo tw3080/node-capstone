@@ -9,6 +9,10 @@
                 No results found :(
             </p>
         </div>
+        <!-- ng-show="search.CollectionAppService.isLoading" -->
+        <div class="loader angular-animate animate-fade" ng-show="search.CollectionAppService.isLoading">
+            Loading...
+        </div>
         <!-- Search results table -->
         <table class="results-table angular-animate animate-fade" ng-show="search.CollectionAppService.showResults && search.CollectionAppService.searchResults.length !== 0">
             <thead>
