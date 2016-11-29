@@ -38399,15 +38399,9 @@
 	                $location.path('/login'); // On successful signup, redirect the user to the login page
 	            }, function (data) {
 	                // If the username is already registered, alert the user
-	                console.log(data);
 	                if (data.status == 500) {
 	                    _this.isDuplicate = true; // Set to true because the username is already registered
 	                }
-	                /*
-	                if (data.data.message == 'Username is already taken') {
-	                    this.isDuplicate = true; // Set to true because the username is already registered
-	                }
-	                */
 	            });
 	        }
 	    }]);

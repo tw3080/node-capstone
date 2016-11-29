@@ -138,12 +138,6 @@ app.post('/users', jsonParser, function(req, res) {
             });
             user.save(function(err) {
                 if (err) {
-                    // If the username is a duplicate, send an error message to the client
-                    if (err.message.startsWith('E11000 duplicate key error collection')) {
-                        return res.status(500).json({
-                            message: 'Username is already taken'
-                        });
-                    }
                     return res.status(500).json({
                         message: 'Internal server error 3'
                     });
