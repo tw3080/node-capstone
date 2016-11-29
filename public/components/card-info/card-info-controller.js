@@ -43,6 +43,7 @@ export default class CardInfoCtrl {
         });
     }
 
+    // Removes the current card from the user's collection
     removeCard() {
         let controller = this;
 

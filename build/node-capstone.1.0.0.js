@@ -38170,11 +38170,14 @@
 	    _createClass(SearchCtrl, [{
 	        key: 'submit',
 	        value: function submit(cardName, valid) {
-	            /* If the form is valid, get the list of cards */
+	            // If the form is valid, get the list of cards
 	            if (valid) {
 	                this.CollectionAppService.getCardsByName(cardName);
 	            }
 	        }
+	
+	        // Redirect the user to the info page for the specific card they click on
+	
 	    }, {
 	        key: 'getCardInfo',
 	        value: function getCardInfo(id) {
@@ -38257,6 +38260,9 @@
 	                controller.cardAdded = true;
 	            });
 	        }
+	
+	        // Removes the current card from the user's collection
+	
 	    }, {
 	        key: 'removeCard',
 	        value: function removeCard() {
