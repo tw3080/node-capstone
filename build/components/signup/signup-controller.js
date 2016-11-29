@@ -15,7 +15,7 @@ export default class SignupCtrl {
         this.isDuplicate = false; // For displaying an error message about a username already being registered. If false, username is not registered; if true, username is already registered and the user must pick a different username
     }
 
-    /* Creates a new user by calling the userSignup() function from the CollectionAppService service */
+    // Creates a new user by calling the userSignup() function from the CollectionAppService service
     signUp() {
         let $location = this.location; // Setting 'this.location' to a variable in order to use it to redirect the user within the scope of this signUp() function
 

@@ -37923,7 +37923,7 @@
 	        this.user = null;
 	    }
 	
-	    /* Gets a list of cards by name of Pokemon */
+	    // Gets a list of cards by name of Pokemon
 	
 	
 	    _createClass(CollectionAppService, [{
@@ -37943,14 +37943,13 @@
 	                params: this.params
 	            }).then(function (response) {
 	                controller.searchResults = response.data.cards;
-	                // console.log(controller.searchResults);
 	                controller.showResults = true; // If true, show the search results
 	                controller.isLoading = false; // If false, hide the loader animation on the search page
 	                return response.data.cards;
 	            });
 	        }
 	
-	        /* Gets a card by its unique id and returns a single card */
+	        // Gets a card by its unique id and returns a single card
 	
 	    }, {
 	        key: 'getCardById',
@@ -37981,7 +37980,7 @@
 	            });
 	        }
 	
-	        /* Logs the user in */
+	        // Logs the user in
 	
 	    }, {
 	        key: 'userLogin',
@@ -37996,7 +37995,7 @@
 	            });
 	        }
 	
-	        /* Logs the user out */
+	        // Logs the user out
 	
 	    }, {
 	        key: 'logout',
@@ -38004,7 +38003,7 @@
 	            this.user = null;
 	        }
 	
-	        /* Checks to see if the user is logged in and is used to display relevent information depending on whether the user is/isn't logged in */
+	        // Checks to see if the user is logged in and is used to display relevent information depending on whether the user is/isn't logged in
 	
 	    }, {
 	        key: 'isLoggedIn',
@@ -38016,7 +38015,7 @@
 	            }
 	        }
 	
-	        /* Gets the user's collection */
+	        // Gets the user's collection
 	
 	    }, {
 	        key: 'getCollection',
@@ -38027,7 +38026,7 @@
 	            });
 	        }
 	
-	        /* Adds a card to the user's collection */
+	        // Adds a card to the user's collection
 	
 	    }, {
 	        key: 'addToCollection',
@@ -38046,7 +38045,7 @@
 	            });
 	        }
 	
-	        /* Removes a card from the user's collection */
+	        // Removes a card from the user's collection
 	
 	    }, {
 	        key: 'removeFromCollection',
@@ -38165,7 +38164,7 @@
 	        this.cardName = '';
 	    }
 	
-	    /* Submit the search */
+	    // Submit the search
 	
 	
 	    _createClass(SearchCtrl, [{
@@ -38225,20 +38224,21 @@
 	        this.CollectionAppService = CollectionAppService;
 	        this.id = $routeParams.id; // Set the id variable equal to the value of the route parameter's id
 	        this._id = $routeParams._id; // Set the id variable equal to the value of the route parameter's _id
-	        /* These values determine what color the add/remove buttons should be; if false, the button(s) will have the standard style, but if true, the button(s) will turn green (card added) or red (card removed) */
+	
+	        // These values determine what color the add/remove buttons should be; if false, the button(s) will have the standard style, but if true, the button(s) will turn green (card added) or red (card removed)
 	        this.cardAdded = false;
 	        this.cardRemoved = false;
 	
 	        this.getCardInfo();
 	    }
 	
-	    /* Gets information about a specific card based on its value from the route parameter's id */
+	    // Gets information about a specific card based on its value from the route parameter's id
 	
 	
 	    _createClass(CardInfoCtrl, [{
 	        key: 'getCardInfo',
 	        value: function getCardInfo() {
-	            /* Setting 'this' to a variable so it can be used in the nested scope */
+	            // Setting 'this' to a variable so it can be used in the nested scope
 	            var controller = this;
 	
 	            this.CollectionAppService.getCardById(this.id).then(function (response) {
@@ -38246,7 +38246,7 @@
 	            });
 	        }
 	
-	        /* Adds the current card to the user's collection */
+	        // Adds the current card to the user's collection
 	
 	    }, {
 	        key: 'addCard',
@@ -38309,7 +38309,7 @@
 	        this.badCredentials = false; // For displaying an error message when the user enters incorrect login credentials
 	    }
 	
-	    /* Logs the user into their account */
+	    // Logs the user into their account
 	
 	
 	    _createClass(LoginCtrl, [{
@@ -38330,7 +38330,7 @@
 	            });
 	        }
 	
-	        /* Logs the user out */
+	        // Logs the user out
 	
 	    }, {
 	        key: 'logout',
@@ -38379,7 +38379,7 @@
 	        this.isDuplicate = false; // For displaying an error message about a username already being registered. If false, username is not registered; if true, username is already registered and the user must pick a different username
 	    }
 	
-	    /* Creates a new user by calling the userSignup() function from the CollectionAppService service */
+	    // Creates a new user by calling the userSignup() function from the CollectionAppService service
 	
 	
 	    _createClass(SignupCtrl, [{

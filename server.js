@@ -19,16 +19,16 @@ app.use(session({ secret: 'pax' }));
 app.use(passport.initialize());
 app.use(passport.session());
 
-/* Models */
+// Models
 var User = require('./models/user');
 var Collection = require('./models/collection');
 
 function isLoggedIn(req, res, next) {
-    /* For production */
+    // For production
     if (req.isAuthenticated()) {
         return next();
     }
-    /* For testing, inject a user manually */
+    // For testing, inject a user manually
     if (process.env.NODE_ENV !== 'production' ) {
         req.user = { '_id': '1', 'username': 'test', 'password': 'test' };
         return next();
@@ -36,7 +36,7 @@ function isLoggedIn(req, res, next) {
     res.sendStatus(403);
 }
 
-/* Passport authentication */
+// Passport authentication
 passport.use('local', new LocalStrategy(
   function(username, password, done) {
     User.findOne({ username: username }, function (err, user) {
@@ -76,7 +76,7 @@ passport.deserializeUser(function(id, done) {
     });
 });
 
-/* Creating new users */
+// Creating new users
 app.post('/users', jsonParser, function(req, res) {
     if (!req.body) {
         return res.status(400).json({
@@ -119,7 +119,7 @@ app.post('/users', jsonParser, function(req, res) {
             message: 'Incorrect field length: password'
         });
     }
-    /* Hashing passwords */
+    // Hashing passwords
     bcrypt.genSalt(10, function(err, salt) {
         if (err) {
             return res.status(500).json({
@@ -138,7 +138,7 @@ app.post('/users', jsonParser, function(req, res) {
             });
             user.save(function(err) {
                 if (err) {
-                    /* If the username is a duplicate, send an error message to the client */
+                    // If the username is a duplicate, send an error message to the client
                     if (err.message.startsWith('E11000 duplicate key error collection')) {
                         return res.status(500).json({
                             message: 'Username is already taken'
@@ -154,18 +154,18 @@ app.post('/users', jsonParser, function(req, res) {
     });
 });
 
-/* Logging in */
+// Logging in
 app.post('/login', passport.authenticate('local'), function(req, res) {
     return res.status(200).json(req.user);
 });
 
-/* Logging out */
+// Logging out
 app.get('/logout', function(req, res){
     req.logout();
     res.redirect('/');
 });
 
-/* Gets the user's collection based on user id */
+// Gets the user's collection based on user id
 app.get('/collection', isLoggedIn, function(req, res) {
     var query = { userId: req.user._id };
     Collection.findOne(query, function(err, data) {
@@ -173,34 +173,27 @@ app.get('/collection', isLoggedIn, function(req, res) {
     });
 });
 
-/* Adds a card (and information about that card) to the user's collection */
+// Adds a card (and information about that card) to the user's collection
 app.post('/collection', isLoggedIn, function(req, res) {
     var card = req.body.card;
     var query = { userId: req.user._id, username: req.user.username };
     card = { id: card.id, name: card.name, imageUrl: card.imageUrl };
-
-    console.log(card);
-    console.log(card.id);
-
     var update = { $push: { cardList: { card: card, id: card.id } }, $inc: { collectionSize: 1 } };
     Collection.findOneAndUpdate(query, update, { upsert: true, new: true }, function(err, data) {
-        console.log(err);
         res.status(201).json(data);
     });
 });
 
+// Deletes a specific card from the collection by its ID
 app.delete('/collection/:id', isLoggedIn, function(req, res) {
     var query = { userId: req.user._id, username: req.user.username };
     var update = { $pull: { cardList: { _id: req.params.id } }, $inc: { collectionSize: -1 } };
-
-    console.log('deleted card');
-
     Collection.findOneAndUpdate(query, update, function(err, data) {
         res.status(200).json(data);
     });
 });
 
-/* Connect to the mongoose database and run the HTTP server */
+// Connect to the mongoose database and run the HTTP server
 var runServer = function(callback) {
     mongoose.connect(config.DATABASE_URL, function(err) {
         if (err && callback) {
@@ -216,7 +209,7 @@ var runServer = function(callback) {
     });
 };
 
-/* Makes this file an executable script as well as a module */
+// Makes this file an executable script as well as a module
 if (require.main === module) {
     runServer(function(err) {
         if (err) {

@@ -6,7 +6,7 @@ export default class CollectionAppService {
         this.user = null;
     }
 
-    /* Gets a list of cards by name of Pokemon */
+    // Gets a list of cards by name of Pokemon
     getCardsByName(name) {
         var controller = this;
         controller.showResults = false; // If false, don't show the search results
@@ -22,14 +22,13 @@ export default class CollectionAppService {
             params: this.params
         }).then(function(response) {
             controller.searchResults = response.data.cards;
-            // console.log(controller.searchResults);
             controller.showResults = true; // If true, show the search results
             controller.isLoading = false; // If false, hide the loader animation on the search page
             return response.data.cards;
         });
     }
 
-    /* Gets a card by its unique id and returns a single card */
+    // Gets a card by its unique id and returns a single card
     getCardById(id) {
         this.id = id;
 
@@ -54,7 +53,7 @@ export default class CollectionAppService {
         });
     }
 
-    /* Logs the user in */
+    // Logs the user in
     userLogin(username, password) {
         return this.$http({
             method: 'POST',
@@ -66,12 +65,12 @@ export default class CollectionAppService {
         });
     }
 
-    /* Logs the user out */
+    // Logs the user out
     logout() {
         this.user = null;
     }
 
-    /* Checks to see if the user is logged in and is used to display relevent information depending on whether the user is/isn't logged in */
+    // Checks to see if the user is logged in and is used to display relevent information depending on whether the user is/isn't logged in
     isLoggedIn() {
         if (this.user) {
             return true;
@@ -80,7 +79,7 @@ export default class CollectionAppService {
         }
     }
 
-    /* Gets the user's collection */
+    // Gets the user's collection
     getCollection() {
         return this.$http({
             method: 'GET',
@@ -88,7 +87,7 @@ export default class CollectionAppService {
         });
     }
 
-    /* Adds a card to the user's collection */
+    // Adds a card to the user's collection
     addToCollection(card) {
         var controller = this;
         controller.cardAddedMsg = false; // If false, don't show the message confirming the card was added to the collection
@@ -104,7 +103,7 @@ export default class CollectionAppService {
         });
     }
 
-    /* Removes a card from the user's collection */
+    // Removes a card from the user's collection
     removeFromCollection(card) {
         var controller = this;
         controller.cardRemovedMsg = false; // If false, don't show the message confirming the card was removed from the collection

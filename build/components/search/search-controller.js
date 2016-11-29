@@ -13,7 +13,7 @@ export default class SearchCtrl {
         this.cardName = '';
     }
 
-    /* Submit the search */
+    // Submit the search
     submit(cardName, valid) {
         /* If the form is valid, get the list of cards */
         if (valid) {

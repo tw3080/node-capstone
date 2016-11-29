@@ -16,7 +16,7 @@ export default class LoginCtrl {
         this.badCredentials = false; // For displaying an error message when the user enters incorrect login credentials
     }
 
-    /* Logs the user into their account */
+    // Logs the user into their account
     login() {
         let $location = this.location; // Setting 'this.location' to a variable in order to use it to redirect the user within the scope of this login() function
 
@@ -31,7 +31,7 @@ export default class LoginCtrl {
         });
     }
 
-    /* Logs the user out */
+    // Logs the user out
     logout() {
         this.CollectionAppService.logout();
     }
