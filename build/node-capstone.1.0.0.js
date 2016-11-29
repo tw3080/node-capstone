@@ -37965,7 +37965,7 @@
 	            });
 	        }
 	
-	        /* Creates a new account */
+	        // Creates a new account
 	
 	    }, {
 	        key: 'userSignup',

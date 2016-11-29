@@ -41,7 +41,7 @@ export default class CollectionAppService {
         });
     }
 
-    /* Creates a new account */
+    // Creates a new account
     userSignup(username, password) {
         return this.$http({
             method: 'POST',
