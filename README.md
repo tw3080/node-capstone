@@ -86,7 +86,7 @@ When the card info page is accessed through the collection (meaning the user cli
 * Font Awesome
 
 ## Future Plans
-* A wish list for users to keep track of which cards they want but don't already own
 * Search filtering (filter by series, rarity, etc.)
-* Public profiles where users can view other users' collections/wish lists
 * Leaderboards showing which users have collected the most cards based on certain criteria (overall, sets, etc.)
+* A wish list for users to keep track of which cards they want but don't already own
+* Public profiles where users can view other users' collections/wish lists
