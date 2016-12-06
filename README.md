@@ -11,7 +11,6 @@ Pok&eacute; Mongo is an app for helping people to quickly view and manage their 
 ### Home
 <p align="center">
     <img src="./public/assets/images/screenshots/home.png">
-    <img src="./public/assets/images/screenshots/home-logged-in.png">
 </p>
 
 On the home screen, if the user isn't logged in, they're prompted to either login or sign up.
