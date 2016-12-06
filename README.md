@@ -52,19 +52,16 @@ On the search screen, the user can search for Pok&eacute;mon cards based on the 
     <img src="./public/assets/images/screenshots/card-info.png">
 </p>
 
-On the card info screen, the user can see extra information about a specific card, such as Pok&eacute;dex number, rarity, which series it belongs to, etc. If the user is logged in, they have the option of adding or removing the card from their collection by clicking the 'add card' or 'remove card' buttons.
+On the card info screen (when accessed through the search results), the user can see extra information about a specific card, such as Pok&eacute;dex number, rarity, which series it belongs to, etc. If the user is logged in, they have the option of adding the card to their collection by clicking the 'add card' button. Users can add multiples of the same card to their collection.
 
-If the user isn't logged in, the 'add card' and 'remove card' buttons will be replaced with a prompt asking the user to login or sign up to use those features.
+If the user isn't logged in, the 'add card' is replaced with a prompt asking the user to login or sign up to use those features.
 
 
 <p align="center">
-    <img src="./public/assets/images/screenshots/card-added.png">
-    <img src="./public/assets/images/screenshots/card-removed.png">
+    <img src="./public/assets/images/screenshots/remove-card.png">
 </p>
 
-After the user clicks 'add card', that button's text will change to 'added' and its background color will change to green to notify the user that the card was added.
-
-Similarly, if the user clicks 'remove card', that button's text will change to 'removed' and its background color will change to red to notify the user that the card was removed.
+When the card info page is accessed through the collection (meaning the user clicks on a card from within their collection page) the 'add card' button is replaced with the 'remove card' button, allowing the user to remove that specific card from their collection.
 
 ## Technology Used
 * JavaScript (ES6 where possible)
