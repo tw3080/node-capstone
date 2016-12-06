@@ -34,7 +34,6 @@ On the login screen, the user can login using their registered credentials. Afte
 ### Collection
 <p align="center">
     <img src="./public/assets/images/screenshots/collection.png">
-    <img src="./public/assets/images/screenshots/empty-collection.png">
 </p>
 
 On the collection screen, thumbnails of the cards in the user's collection and the total number of cards collected will display as long as the user has at least one card in their collection. Clicking on a card's thumbnail will redirect the user to that card's info page.
@@ -51,7 +50,6 @@ On the search screen, the user can search for Pok&eacute;mon cards based on the 
 ### Card Info
 <p align="center">
     <img src="./public/assets/images/screenshots/card-info.png">
-    <img src="./public/assets/images/screenshots/card-info-not-logged-in.png">
 </p>
 
 On the card info screen, the user can see extra information about a specific card, such as Pok&eacute;dex number, rarity, which series it belongs to, etc. If the user is logged in, they have the option of adding or removing the card from their collection by clicking the 'add card' or 'remove card' buttons.
